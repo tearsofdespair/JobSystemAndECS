@@ -9,12 +9,11 @@ using UnityEngine;
 public class FactorialJob : IJob
 {
     private int _randomNumber;
-    private int _n;
+    
 
-    public FactorialJob(int randomNumber, int n)
+    public FactorialJob(int randomNumber)
     {
         _randomNumber = randomNumber;
-        _n = n;
     }
 
     public void Execute()

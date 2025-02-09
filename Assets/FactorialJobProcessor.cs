@@ -3,25 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
+using Zenject;
 using Random = System.Random;
 
 public class FactorialJobProcessor : MonoBehaviour
 {
-    public int N;
-    public int ObjectAmount;
+    [Inject(Id = "delay")] private int _delay;
+    [Inject(Id = "objectamount")] private int _objectAmount;
     private Random random = new Random();
-
+    
     private void Start()
     {
-        for (int i = 0; i < ObjectAmount; i++)
+        for (int i = 0; i < _objectAmount; i++)
         {
-            StartCoroutine(RegurlarExcecution(N));
+            StartCoroutine(RegurlarExcecution(_delay));
         }
     }
 
     public void getFactorialOfRundomNumber(int min, int max)
     {
-        FactorialJob factorialJob = new FactorialJob(random.Next(min, max), N);
+        FactorialJob factorialJob = new FactorialJob(random.Next(min, max));
         factorialJob.Execute();
     }
 

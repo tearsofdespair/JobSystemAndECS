@@ -7,13 +7,13 @@ public struct MovementJOB : IJobParallelForTransform
 {
     private float _speed;
     private float _radius;
-    private Vector3 _center;
+    
 
-    public MovementJOB(float speed, float radius, Vector3 center)
+    public MovementJOB(float speed, float radius)
     {
         _speed = speed;
         _radius = radius;
-        _center = center;
+        
     }
 
      

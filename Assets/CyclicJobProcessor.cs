@@ -5,14 +5,21 @@ using Unity.Jobs;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Jobs;
+using Zenject;
 
 public class CyclicJobProcessor : MonoBehaviour
 {
-    [SerializeField] private GameObject prefab;
-    [SerializeField] private float speed;
-    [SerializeField] private int spawnCount;
-    [SerializeField] private float radius;
-    [SerializeField] private Vector3 center;
+     private GameObject _prefab;
+     [Inject(Id = "speed")] private float _speed;
+     [Inject(Id = "objectamount")] private int _spawnCount;
+     [Inject(Id = "radius")] private float _radius;
+
+    [Inject]
+    public void Construct(GameObject prefab)
+    {
+        this._prefab = prefab;
+        Debug.Log("hueta");
+    }
 
     private Transform[] _transforms;
     private TransformAccessArray _transformAccessArray;
@@ -27,19 +34,19 @@ public class CyclicJobProcessor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _transforms = new Transform[spawnCount];
-        for(int i = 0; i < spawnCount; i++)
+        _transforms = new Transform[_spawnCount];
+        for(int i = 0; i < _spawnCount; i++)
         {
-            Transform instanceTransform = Instantiate(prefab, Vector3.zero, Quaternion.identity).transform;
+            Transform instanceTransform = Instantiate(_prefab, Vector3.zero, Quaternion.identity).transform;
             _transforms[i] = instanceTransform;
         }
         _transformAccessArray = new TransformAccessArray(_transforms);
-        _numberLogs = new NativeArray<int>(spawnCount, Allocator.Persistent);
+        _numberLogs = new NativeArray<int>(_spawnCount, Allocator.Persistent);
     }
 
     private void HandleMovementJob()
     {
-        MovementJOB movementJob = new MovementJOB(speed, radius, center);
+        MovementJOB movementJob = new MovementJOB(_speed, _radius);
         JobHandle jobHandle = movementJob.Schedule(_transformAccessArray);
         jobHandle.Complete();
     }
