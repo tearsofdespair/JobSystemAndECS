@@ -20,9 +20,10 @@ public struct MovementJOB : IJobParallelForTransform
 
     public void Execute(int index, TransformAccess transform)
     {
-        Vector3 r = Quaternion.AngleAxis(_speed, Vector3.forward) * Vector3.up;
-        // The center of the center + radius = the point on the round
-        transform.position += _center + r;
+        float currentAngle = Mathf.Atan2(transform.position.y, transform.position.x);
+        float newAngle = currentAngle + _speed;
+        Vector3 newPosition = new Vector3(Mathf.Cos(newAngle) * _radius, Mathf.Sin(newAngle) * _radius, transform.position.z);
+        transform.position = newPosition;
 
         
     }
