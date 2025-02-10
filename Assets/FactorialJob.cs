@@ -18,7 +18,7 @@ public class FactorialJob : IJob
 
     public void Execute()
     {
-        Debug.Log($"Factorial of {_randomNumber} is {GetFactorial((long)_randomNumber)}");
+        Debug.Log($"Factorial of {_randomNumber} is {GetFactorial((long)_randomNumber).ToString().TrimEnd('0')}");
     }
     
     private BigInteger GetFactorial(BigInteger f)
