@@ -6,7 +6,7 @@ using UnityEngine;
 using Zenject;
 using Random = System.Random;
 
-public class FactorialJobProcessor : MonoBehaviour
+public class LogarithmJobProcessor : MonoBehaviour
 {
     [Inject(Id = "delay")] private int _delay;
     [Inject(Id = "objectamount")] private int _objectAmount;

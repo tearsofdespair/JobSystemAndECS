@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class FactorialMonoInstaller : MonoInstaller
+public class LogarithmMonoInstaller : MonoInstaller
 {
     public int Delay;
 
