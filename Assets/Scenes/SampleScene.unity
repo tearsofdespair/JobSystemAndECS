@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 138595715}
   - component: {fileID: 138595716}
   m_Layer: 0
-  m_Name: FactorialMonoInstaller
+  m_Name: LogarithmMonoInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 412388265}
   - component: {fileID: 412388266}
   m_Layer: 0
-  m_Name: FactorialJobProcessor
+  m_Name: LogarithmJobProcessor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

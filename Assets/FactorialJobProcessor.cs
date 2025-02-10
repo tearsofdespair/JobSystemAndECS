@@ -22,8 +22,8 @@ public class FactorialJobProcessor : MonoBehaviour
 
     public void getFactorialOfRundomNumber(int min, int max)
     {
-        FactorialJob factorialJob = new FactorialJob(random.Next(min, max));
-        factorialJob.Execute();
+        LogarithmJob logarithmJob = new LogarithmJob(random.Next(min, max));
+        logarithmJob.Execute();
     }
 
     IEnumerator RegurlarExcecution(int n)
